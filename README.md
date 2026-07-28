@@ -1,17 +1,32 @@
-# GCP_devs
-Architecture & Implementation Strategy
-To ensure seamless integration across data pipelines, Google Colab was selected as the centralized development environment. This approach unifies Python-based data manipulation and SQL querying into a single, scalable execution engine, leveraging native security and native authentication with Google Cloud Platform and BigQuery.
-Note: Code scripts, table schemas, and business configurations contained within this repository have been fully anonymized and sanitized to protect proprietary business logic and enterprise security standard protocols.
+# Enterprise FP&A Data Pipeline on GCP & BigQuery
 
-https://colab.research.google.com/github/drperezt/GCP_devs/blob/main/Finance_Pipeline.ipynb
+[![Python 3.10+](https://img.shields.io/badge/Python-3.10+-3776AB?style=flat&logo=python&logoColor=white)](https://www.python.org/)
+[![Google Cloud Platform](https://img.shields.io/badge/GCP-BigQuery%20%7C%20Colab-4285F4?style=flat&logo=googlecloud&logoColor=white)](https://cloud.google.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-° ETL & Data Engineering: General Ledger ingestion, staging, incremental delta processing, and data validation.
+An end-to-end financial data engineering and FP&A modeling pipeline designed to automate headcount salary run-rates, benefit ratio allocations, dynamic inflation compounding, and incremental financial reporting.
 
-° Financial Modeling & FP&A Logic: Base salary run-rate projections, statutory benefit ratios, step-function raises, and dynamic inflation compounding.
+This repository demonstrates enterprise data architecture patterns using **Google Colab**, **Google Cloud Platform (GCP)**, and **BigQuery**, bridging dynamic business parameters with automated cloud data processing.
 
-° Cloud & Infrastructure Integration: BigQuery dataset management, Google Sheets dynamic parameters master control, and secure Google Cloud authentication.
+> **Note:** All code, table schemas, proprietary business logic, and financial configurations in this repository have been fully anonymized and sanitized to adhere to enterprise security and confidentiality protocols.
 
-° Data Quality & Governance: Sub-segment targeted reprocessing (avoiding full-table rewrites) and automated catalog mapping.
+---
+
+## 📋 Executive Summary & Problem Statement
+
+Traditional FP&A workflows often rely on static spreadsheets prone to manual errors, version drift, and slow execution when processing large General Ledger datasets. 
+
+This project unifies Python data engineering with scalable BigQuery SQL operations to create an automated, idempotent financial modeling engine.
+
+### Key Capabilities
+* **Automated Run-Rate Projections:** Dynamically projects base salaries, step-function wage increases, statutory benefits, and flexible vouchers.
+* **Low-Code Parameter Control:** Enables business users to manage dynamic assumptions (inflation rates, cost center mappings) via Google Sheets without touching underlying pipeline code.
+* **Targeted Delta Reprocessing:** Implements idempotent sub-segment reprocessing (partition-aware `DELETE`/`INSERT` and `MERGE` routines) to update dynamic forecasts without full-table scans.
+* **Unified GCP Security:** Operates with native Application Default Credentials (ADC) to ensure safe, keyless authentication between Colab, Google Drive, and BigQuery.
+
+---
+
+## 🏗 System Architecture
 
 ```mermaid
 flowchart TD
@@ -22,7 +37,7 @@ flowchart TD
     classDef output fill:#efebe9,stroke:#5d4037,stroke-width:2px;
 
     subgraph Inputs["1. Data Sources & Inputs"]
-        A1[Data Warehouse Accounting Journal]:::source
+        A1[Accounting Journal Actuals]:::source
         A2[Google Sheets Config Master]:::source
         A3[Headcount & Benefits Rosters]:::source
     end
@@ -40,12 +55,12 @@ flowchart TD
     end
 
     subgraph Storage["4. Staging & Delta Reprocessing"]
-        D1[Targeted Sub-Segment Deletions/Inserts]:::storage
+        D1[Targeted Sub-Segment Updates]:::storage
         D2[BigQuery Financial Budget Datasets]:::storage
     end
 
     subgraph BI["5. Business Intelligence"]
-        E1[Consolidated Forecast Views & BI Data Marts]:::output
+        E1[Consolidated Forecast Data Marts]:::output
     end
 
     A1 --> C1
@@ -63,4 +78,3 @@ flowchart TD
     C4 --> D2
     D2 --> D1
     D2 --> E1
-```
