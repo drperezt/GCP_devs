@@ -78,3 +78,10 @@ flowchart TD
     C4 --> D2
     D2 --> D1
     D2 --> E1
+
+## 🤝 Acknowledgments & AI Usage
+
+This project leveraged **Google Gemini** as an interactive AI pair-programmer and engineering assistant to:
+* **Code Sanitization:** Anonymize internal schema definitions, project IDs, and business logic for open-source deployment.
+* **Architecture Design:** Validate pipeline modularity, BigQuery partition strategies, and idempotent `MERGE` patterns.
+* **Documentation & Web Interface:** Format system architecture diagrams (Mermaid.js) and generate front-end interface components for Google Apps Script.
