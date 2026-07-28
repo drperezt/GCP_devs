@@ -1,5 +1,7 @@
 # GCP_devs
-cloud-native-data-pipeline-template
+Architecture & Implementation Strategy
+To ensure seamless integration across data pipelines, Google Colab was selected as the centralized development environment. This approach unifies Python-based data manipulation and SQL querying into a single, scalable execution engine, leveraging native security and native authentication with Google Cloud Platform and BigQuery.
+Note: Code scripts, table schemas, and business configurations contained within this repository have been fully anonymized and sanitized to protect proprietary business logic and enterprise security standard protocols.
 
 ```mermaid
 flowchart TD
