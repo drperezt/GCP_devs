@@ -79,6 +79,8 @@ flowchart TD
     D2 --> D1
     D2 --> E1
 
+```
+
 ## 🤝 Acknowledgments & AI Usage
 
 This project leveraged **Google Gemini** as an interactive AI pair-programmer and engineering assistant to:
