@@ -5,10 +5,13 @@ Note: Code scripts, table schemas, and business configurations contained within 
 
 https://colab.research.google.com/github/drperezt/GCP_devs/blob/main/Finance_Pipeline.ipynb
 
-ETL & Data Engineering: General Ledger ingestion, staging, incremental delta processing, and data validation.
-Financial Modeling & FP&A Logic: Base salary run-rate projections, statutory benefit ratios, step-function raises, and dynamic inflation compounding.
-Cloud & Infrastructure Integration: BigQuery dataset management, Google Sheets dynamic parameters master control, and secure Google Cloud authentication.
-Data Quality & Governance: Sub-segment targeted reprocessing (avoiding full-table rewrites) and automated catalog mapping.
+° ETL & Data Engineering: General Ledger ingestion, staging, incremental delta processing, and data validation.
+
+° Financial Modeling & FP&A Logic: Base salary run-rate projections, statutory benefit ratios, step-function raises, and dynamic inflation compounding.
+
+° Cloud & Infrastructure Integration: BigQuery dataset management, Google Sheets dynamic parameters master control, and secure Google Cloud authentication.
+
+° Data Quality & Governance: Sub-segment targeted reprocessing (avoiding full-table rewrites) and automated catalog mapping.
 
 ```mermaid
 flowchart TD
